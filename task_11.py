@@ -20,7 +20,7 @@ class Dessert:
         self._calories = calories
 
     def is_healthy(self):
-        if type(self.calories) != (int or float):
+        if type(self.calories) not in [float, int]:
             return None
         if self.calories < 200:
             return True
@@ -32,16 +32,11 @@ class Dessert:
 
 
 '''x = Dessert()
-
-x.__init__("cake", 150)
-print(x.is_healthy())
-print(x.is_delicious())
-s = x.name
-print(s)
-x.name = "apple cake"
-s = x.name
-print(s)
-x.calories = 205
+x.name = "test_name"
+print(x.name)
+x.name = "test_name2"
+print(x.name)
+x.calories = 199.99999
 print(x.calories)
-print(x.is_healthy())'''
-
+print(x.is_healthy())
+'''

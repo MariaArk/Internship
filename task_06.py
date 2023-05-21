@@ -1,10 +1,17 @@
+class WrongNumberOfPlayersError(Exception):
+    def __init__(self, text):
+        self.txt = text
+class NoSuchStrategyError(Exception):
+    def __init__(self, text):
+        self.txt = text
+
 def rps_game_winner(array_player):
     try:
         if len(array_player) > 2:
-            raise Exception("WrongNumberOfPlayersError")
+            raise WrongNumberOfPlayersError('WrongNumberOfPlayersError')
         for i in array_player:
             if i[1] not in 'RSP':
-                raise Exception("NoSuchStrategyError")
+                raise NoSuchStrategyError("NoSuchStrategyError")
         win1 = array_player[0][0] + ' ' + str(array_player[0][1])
         win2 = array_player[1][0] + ' ' + str(array_player[1][1])
         if array_player[0][1] == 'R':
@@ -28,14 +35,14 @@ def rps_game_winner(array_player):
                 return win1
             else:
                 return win2
-    except Exception:
-        raise
+    except WrongNumberOfPlayersError:
+        print("WrongNumberOfPlayersError")
+    except NoSuchStrategyError:
+        print("NoSuchStrategyError")
 
 
-#m = rps_game_winner([['player1', 'P'], ['player2', 'S'], ['player3', 'S']])
-#print(m)
-#m = s.rps_game_winner([['player1', 'P'], ['player2', 'A']])
-#print(m)
+m = rps_game_winner([['player1', 'P'], ['player2', 'S'], ['player3', 'S']])
+m = rps_game_winner([['player1', 'P'], ['player2', 'A']])
 m = rps_game_winner([['player1', 'P'], ['player2', 'S']])
 print(m)
 m = rps_game_winner([['player1', 'P'], ['player2', 'P']])

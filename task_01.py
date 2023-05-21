@@ -3,7 +3,7 @@ import re
 
 def is_palindrome(string):
     if string is None:
-        return "NO"
+        return False
     string = str(string)
     string = string.lower()
     string = re.sub(r'[^\w]', '', string)
@@ -11,15 +11,15 @@ def is_palindrome(string):
     for i in range(size // 2):
         dk = size - 1 - i
         if string[i] != string[dk]:
-            return "NO"
-    return "YES"
+            return False
+    return True
 
 
 f = is_palindrome("A man, a plan, a canal -- Panama")
 print(f)
 f = is_palindrome("Madam, I'm Adam!")
 print(f)
-f = is_palindrome(333)
+f = is_palindrome('333')
 print(f)
 f = is_palindrome(None)
 print(f)
